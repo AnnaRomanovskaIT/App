@@ -11,6 +11,4 @@ function validateWeatherRequest(req, res, next) {
     next();
 }
 
-export default {
-    validateWeatherRequest,
-};
+export default validateWeatherRequest;
