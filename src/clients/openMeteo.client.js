@@ -1,8 +1,9 @@
 import { ExternalApiError } from "../errors/external-api.error.js";
+import { config } from "../config/config.js";
 
 async function getMeteoWeather(latitude, longitude) {
     const response = await fetch(
-        "https://api.open-meteo.com/v1/forecast?" +
+        `${config.openMeteo.weatherUrl}?` +
             `latitude=${latitude}` +
             `&longitude=${longitude}` +
             "&hourly=temperature_2m,weather_code" +
@@ -22,7 +23,7 @@ async function getMeteoWeather(latitude, longitude) {
 
 async function getGeolocation(cityName, locale = "en") {
     const response = await fetch(
-        "https://geocoding-api.open-meteo.com/v1/search?" +
+        `${config.openMeteo.geocodingUrl}?` +
             `name=${encodeURIComponent(cityName)}` +
             "&count=10" +
             `&language=${locale}` +

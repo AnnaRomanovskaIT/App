@@ -4,6 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "start": "node src/server.js",
+        "test": "node --test",
         "lint": "eslint .",
         "format": "prettier --write .",
         "format:check": "prettier --check ."

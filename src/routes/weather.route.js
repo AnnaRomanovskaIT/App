@@ -1,5 +1,5 @@
 import { Router } from "express";
-import validateRequest from "../validation/weather.validation.js";
+import validateRequest from "../validation/validation.js";
 import weatherService from "../services/weather.service.js";
 
 const router = Router();
