@@ -1,4 +1,4 @@
-import { Weather, Location, Forecast } from "./weather.model.js";
+import { Forecast, Location, Weather } from "./weather.model.js";
 
 export function mapOpenMeteoToWeather(data, locationName) {
     const forecast = data.hourly.time.map(
