@@ -20,6 +20,26 @@ async function getMeteoWeather(latitude, longitude) {
     return response.json();
 }
 
+async function getGeolocation(cityName, locale = "en") {
+    const response = await fetch(
+        `https://geocoding-api.open-meteo.com/v1/search?` +
+        `name=${encodeURIComponent(cityName)}` +
+        `&count=10` +
+        `&language=${locale}` +
+        `&format=json`
+    );
+
+    if (!response.ok) {
+        throw new ExternalApiError(
+            "Open-Meteo request failed",
+            response.status
+        );
+    }
+
+    return response.json();
+}
+
 export default {
     getMeteoWeather,
+    getGeolocation,
 };

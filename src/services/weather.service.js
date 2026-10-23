@@ -6,6 +6,12 @@ export async function getWeather(latitude, longitude) {
     return mapOpenMeteoToWeather(data, "Wroclaw");
 }
 
+export async function getGeolocation(name, locale = "en") {
+    const data = await openMeteoClient.getGeolocation(name, locale);
+    return data;
+}
+
 export default {
     getWeather,
+    getGeolocation,
 };
