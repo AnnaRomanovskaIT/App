@@ -11,10 +11,12 @@ router.get(
         try {
             const latitude = Number(req.query.latitude);
             const longitude = Number(req.query.longitude);
+            const locationName = typeof req.query.name === "string" ? req.query.name : "Unknown";
 
             const weather = await weatherService.getWeather(
                 latitude,
-                longitude
+                longitude,
+                locationName
             );
 
             res.json(weather);
