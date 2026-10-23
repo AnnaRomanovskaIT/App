@@ -1,0 +1,47 @@
+function validateWeatherRequest(req, res, next) {
+    const latitude = Number(req.query.latitude);
+    const longitude = Number(req.query.longitude);
+
+    if (Number.isNaN(latitude) || Number.isNaN(longitude)) {
+        return res.status(400).json({
+            error: "Invalid coordinates",
+        });
+    }
+
+    next();
+}
+
+function validateLocationRequest(req, res, next) {
+    const name = req.query.name;
+
+    if (typeof name !== "string") {
+        return res.status(400).json({
+            error: "Location name is required",
+        });
+    }
+
+    if (name.trim().length === 0) {
+        return res.status(400).json({
+            error: "Location name cannot be empty",
+        });
+    }
+
+    if (name.length > 100) {
+        return res.status(400).json({
+            error: "Location name should not exceed 100 characters",
+        });
+    }
+
+    if (!/[\p{L}]/u.test(name)) {
+        return res.status(400).json({
+            error: "Location name must contain at least one letter",
+        });
+    }
+
+    next();
+}
+
+export default {
+    validateWeatherRequest,
+    validateLocationRequest,
+};
