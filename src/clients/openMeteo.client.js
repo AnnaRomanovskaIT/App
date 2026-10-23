@@ -22,11 +22,11 @@ async function getMeteoWeather(latitude, longitude) {
 
 async function getGeolocation(cityName, locale = "en") {
     const response = await fetch(
-        `https://geocoding-api.open-meteo.com/v1/search?` +
-        `name=${encodeURIComponent(cityName)}` +
-        `&count=10` +
-        `&language=${locale}` +
-        `&format=json`
+        "https://geocoding-api.open-meteo.com/v1/search?" +
+            `name=${encodeURIComponent(cityName)}` +
+            "&count=10" +
+            `&language=${locale}` +
+            "&format=json"
     );
 
     if (!response.ok) {

@@ -12,7 +12,7 @@ function validateWeatherRequest(req, res, next) {
 }
 
 function validateLocationRequest(req, res, next) {
-    const name= req.query.name;
+    const name = req.query.name;
 
     if (typeof name !== "string") {
         return res.status(400).json({

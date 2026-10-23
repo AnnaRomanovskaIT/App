@@ -4,7 +4,10 @@ import weatherService from "../services/weather.service.js";
 
 const router = Router();
 
-router.get("/weather",  validateRequest.validateWeatherRequest, async (req, res, next) => {
+router.get(
+    "/weather",
+    validateRequest.validateWeatherRequest,
+    async (req, res, next) => {
         try {
             const latitude = Number(req.query.latitude);
             const longitude = Number(req.query.longitude);
@@ -21,7 +24,10 @@ router.get("/weather",  validateRequest.validateWeatherRequest, async (req, res,
     }
 );
 
-router.get("/locations", validateRequest.validateLocationRequest, async (req, res, next) => {
+router.get(
+    "/locations",
+    validateRequest.validateLocationRequest,
+    async (req, res, next) => {
         try {
             const name = req.query.name;
             const locale = req.query.locale;
