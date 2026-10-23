@@ -6,12 +6,12 @@ const router = Router();
 
 router.get("/weather", validateWeatherRequest, async (req, res, next) => {
     try {
-    const latitude = Number(req.query.latitude);
-    const longitude = Number(req.query.longitude);
+        const latitude = Number(req.query.latitude);
+        const longitude = Number(req.query.longitude);
 
-    const weather = await getWeather(latitude, longitude);
+        const weather = await getWeather(latitude, longitude);
 
-    res.json(weather);
+        res.json(weather);
     } catch (error) {
         next(error);
     }

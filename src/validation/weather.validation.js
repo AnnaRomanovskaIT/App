@@ -4,7 +4,7 @@ function validateWeatherRequest(req, res, next) {
 
     if (Number.isNaN(latitude) || Number.isNaN(longitude)) {
         return res.status(400).json({
-            error: "Invalid coordinates"
+            error: "Invalid coordinates",
         });
     }
 
