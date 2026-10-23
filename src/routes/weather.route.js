@@ -46,4 +46,44 @@ router.get(
     }
 );
 
+router.get(
+    "/weather/latest",
+    validateRequest.validateLocationRequest,
+    async (req, res, next) => {
+        try {
+            const locationName = req.query.name;
+            
+            const latestWeather =
+                await weatherService.getLatestWeatherByLocationName(
+                    locationName
+                );
+
+            if (!latestWeather) {
+                return res.status(404).json({
+                error: "Weather not found",
+            });
+            }  
+
+            res.json(latestWeather);
+        } catch (error) {
+            next(error);
+        }
+    }
+);
+
+router.get(
+    "/weather/:id",
+    validateRequest.validateObjectIdRequest,
+    async (req, res, next) => {
+        try {
+            const weatherId = req.params.id;
+            
+            const weather = await weatherService.getWeatherById(weatherId);
+            res.json(weather);
+        } catch (error) {
+            next(error);
+        }
+    }
+);
+
 export default router;
