@@ -7,15 +7,15 @@ export default [
 
         languageOptions: {
             globals: {
-                ...globals.node
-            }
+                ...globals.node,
+            },
         },
 
         rules: {
             "no-unused-vars": "error",
             "no-undef": "error",
-            "semi": ["error", "always"],
-            "quotes": ["error", "double"]
-        }
-    }
+            semi: ["error", "always"],
+            quotes: ["error", "double"],
+        },
+    },
 ];
